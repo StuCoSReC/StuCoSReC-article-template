@@ -1,2 +1,9 @@
 # book-template
-Latex template for book
+
+## article-template
+
+Latex template for article in a book
+
+## abstract-template
+
+Latex template for abstract in a book
