@@ -1,9 +1,6 @@
-# book-template
+# Latex template for [StuCoSReC conference](https://stucosrec.feri.um.si/2021)
 
-## article-template
 
-Latex template for article in a book
 
-## abstract-template
-
-Latex template for abstract in a book
+## Acknowledgements
+This repository is modified from: [https://github.com/kourgeorge/arxiv-style](https://github.com/kourgeorge/arxiv-style)
