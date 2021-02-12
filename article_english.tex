@@ -1,0 +1,127 @@
+\documentclass{styles/stucosrec_article}
+
+% for testing purposes only
+\usepackage{lipsum}
+\newcommand{\latex}{\LaTeX\xspace}
+
+\title{\latex TEMPLATE FOR StuCoSReC CONTRIBUTION}
+\author{
+	Klemen Berkovi\v{c} \\
+	Faculty of Electrical Engineering and Computer Science\\
+	University of Maribor\\
+	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
+	\texttt{klemen.berkovic1@um.si} \\
+	\And
+	Iztok Fister Jr. \\
+	Faculty of Electrical Engineering and Computer Science\\
+	University of Maribor\\
+	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
+	\texttt{iztok.fister1@um.si} \\
+	%% \And
+	%% Coauthor \\
+	%% Affiliation \\
+	%% Address \\
+	%% \texttt{email} \\
+	%% \And
+	%% Coauthor \\
+	%% Affiliation \\
+	%% Address \\
+	%% \texttt{email} \\
+}
+\date{February 2021}
+
+\begin{document}
+	
+	\begin{abstract}
+		\lipsum[1]
+	\end{abstract}
+		
+	% keywords can be removed
+	\keywords{First keyword \and Second keyword \and ...}
+		
+	\section{Introduction}
+	\lipsum[2]
+	\lipsum[3]
+	
+	
+	\section{Headings: first level}
+	\label{sec:headings}
+	
+	\lipsum[4] See Section \ref{sec:headings}.
+	
+	\subsection{Headings: second level}
+	\lipsum[5]
+	
+	\subsubsection{Headings: third level}
+	\lipsum[6]
+	
+	\paragraph{Paragraph}
+	\lipsum[7]	
+	
+	\section{Examples of citations, figures, tables, references}
+	\label{sec:others}
+	
+	\subsection{Citations}
+	Citations use \verb+natbib+. The documentation may be found at
+	\begin{center}
+		\url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
+	\end{center}
+	
+	Here is an example usage of the two main commands (\verb+citet+ and \verb+citep+)~\cite{vrbancic2019transfer}.
+	
+	\subsection{Figures}
+	\lipsum[10]
+	See Figure~\ref{fig:fig1}. Here is how you add footnotes. \footnote{Sample of the first footnote.}
+	\lipsum[11]
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\rule[-.5cm]{4cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+		\caption{Sample figure caption.}
+		\label{fig:fig1}
+	\end{figure}
+
+	\subsection{Tables}
+	See awesome Table~\ref{tab:table}.
+	
+	The documentation for \verb+booktabs+ (`Publication quality tables in LaTeX') is available from:
+	\begin{center}
+		\url{https://www.ctan.org/pkg/booktabs}
+	\end{center}	
+	
+	\begin{table*}
+		\centering
+		\caption{Some Typical Commands}
+		\label{tab:table}
+		\begin{tabular}{|c|c|l|} \hline
+			Command&A Number&Comments\\ \hline
+			\texttt{{\char'134}alignauthor} & 100& Author alignment\\ \hline
+			\texttt{{\char'134}numberofauthors}& 200& Author enumeration\\ \hline
+			\texttt{{\char'134}table}& 300 & For tables\\ \hline
+			\texttt{{\char'134}table*}& 400& For wider tables\\ \hline
+		\end{tabular}
+	\end{table*}
+
+	\begin{table}[H]
+		\centering
+		\caption{Frequency of Special Characters}
+		\begin{tabular}{|c|c|l|} \hline
+			Non-English or Math&Frequency&Comments\\ \hline
+			\O & 1 in 1,000& For Swedish names\\ \hline
+			$\pi$ & 1 in 5& Common in math\\ \hline
+			\$ & 4 in 5 & Used in business\\ \hline
+			$\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\subsection{Lists}
+	\begin{itemize}
+		\item Lorem ipsum dolor sit amet
+		\item consectetur adipiscing elit.
+		\item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
+	\end{itemize}
+	
+	\bibliography{references}
+
+\end{document}
