@@ -1,4 +1,4 @@
-# Latex template for [StuCoSReC conference](https://stucosrec.feri.um.si/2021)
+# Latex template for [StuCoSReC conference](https://stucosrec.feri.um.si)
 
 
 
