@@ -78,14 +78,12 @@
 	footskip=55pt
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Odstranjevanje izdelave kazala
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\listoffigures{\ClassError{\string\listoffigures\space is not allowed}\@eha}
 \def\listoftables{\ClassError{\string\listoftables\space is not allowed}\@eha}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Libertine font
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\IfFileExists{lmodern.sty}{}{\ClassWarning{\@classname}{lmodern package is missing; please upgrade}}
-\RequirePackage{lmodern}
+\def\listofalgorithms{\ClassError{\string\listofalgorithms\space is not allowed}\@eha}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stil strani
@@ -102,23 +100,10 @@
 \fancyheadoffset{0pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Handling graphics direcory
+% Nastavitve fonta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\imagespath}[1]{\graphicspath{ {./}#1} }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Handling Keywords
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\keywordname{{\bfseries \emph{Keywords}}}%
-\def\keywords#1{%
-	\par\addvspace\medskipamount{%
-		\rightskip=0pt plus1cm
-		\def\and{%
-			\ifhmode\unskip\nobreak\fi\ $\cdot$
-		}%
-		\noindent\keywordname\enspace\ignorespaces#1\par
-	}
-}
+\IfFileExists{lmodern.sty}{}{\ClassWarning{\@classname}{lmodern package is missing; please upgrade}}
+\RequirePackage{lmodern}
 
 % font sizes with reduced leading
 \renewcommand{\normalsize}{%
@@ -145,7 +130,9 @@
 \renewcommand{\huge}{\@setfontsize\huge\@xxpt{23}}
 \renewcommand{\Huge}{\@setfontsize\Huge\@xxvpt{28}}
 
-% sections with less space
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pozicioniranje naslovov
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \providecommand{\section}{}
 \renewcommand{\section}{%
 	\@startsection{section}{1}{\z@}%
@@ -191,7 +178,9 @@
 	\vskip5pt{\noindent\normalsize\rm\raggedright}%
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % float placement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\topfraction      }{0.85}
 \renewcommand{\bottomfraction   }{0.4}
 \renewcommand{\textfraction     }{0.1}
@@ -203,7 +192,9 @@
 \setlength{\abovecaptionskip}{\@abovecaptionskip}
 \setlength{\belowcaptionskip}{\@belowcaptionskip}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pozicioniranje naslovov
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % swap above/belowcaptionskip lengths for tables
 \renewenvironment{table}
 {\setlength{\abovecaptionskip}{\@belowcaptionskip}%
@@ -211,17 +202,26 @@
 \@float{table}}
 {\end@float}
 
+% for algorithms
+\SetAlCapSkip{5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % footnote formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\footnotesep }{6.65\p@}
 \setlength{\skip\footins}{9\p@ \@plus 4\p@ \@minus 2\p@}
 \renewcommand{\footnoterule}{\kern-3\p@ \hrule width 12pc \kern 2.6\p@}
 \setcounter{footnote}{0}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % paragraph formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\parindent}{\z@}
 \setlength{\parskip  }{5.5\p@}
 
-% list formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stil nastevanja
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\topsep       }{4\p@ \@plus 1\p@   \@minus 2\p@}
 \setlength{\partopsep    }{1\p@ \@plus 0.5\p@ \@minus 0.5\p@}
 \setlength{\itemsep      }{2\p@ \@plus 1\p@   \@minus 0.5\p@}
@@ -256,7 +256,9 @@
 \labelwidth\leftmarginvi
 \advance\labelwidth-\labelsep}
 
-% create title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Naslov in avtorji clanka
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \providecommand{\maketitle}{}
 \renewcommand{\maketitle}{%
 	\par
@@ -300,7 +302,28 @@
 	}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Handling graphics direcory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\imagespath}[1]{\graphicspath{ {./}#1} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Handling Keywords
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\keywordname{{\bfseries \emph{Keywords}}}%
+\def\keywords#1{%
+	\par\addvspace\medskipamount{%
+		\rightskip=0pt plus1cm
+		\def\and{%
+			\ifhmode\unskip\nobreak\fi\ $\cdot$
+		}%
+		\noindent\keywordname\enspace\ignorespaces#1\par
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % add conference notice to bottom of first page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\ftype@noticebox}{8}
 \newcommand{\@notice}{%
 	% give a bit of extra room back to authors on first page
@@ -310,7 +333,9 @@
 	\end@float%
 }
 
-% abstract styling
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Handling abstract
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewenvironment{abstract}{
 	\centerline
 	{\large \bfseries \scshape Abstract}
@@ -326,14 +351,14 @@
 \bibliographystyle{acm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Na zacetku
+% Na zacetku dokumenta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{
 	\ifdef{\@review}{\linenumbers}{}
 }
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Na koncu
+% Na koncu dokumenta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtEndDocument{}
 
