@@ -3,7 +3,7 @@
 %
 \NeedsTeXFormat{LaTeX2e}
 
-\def\@classname{styles/stucosrec_article}
+\def\@classname{stucosrec}
 \def\fileversion{V1.00}
 \def\filedate{February 11, 2021}
 \def\docdate {February 11, 2021}
@@ -11,26 +11,21 @@
 \ProvidesClass{\@classname}[2021/02/04 Example LaTeX class]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Opcije
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareOption{review}{\def\@review{\@classname}}
-\ProcessOptions
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Osnovni razred dokumenta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\LoadClass[twocolumn]{article}
+\LoadClass{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Osnovni paketi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc} % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
-\RequirePackage[slovene]{babel} % naloži, med drugim, slovenske delilne vzorce
+\RequirePackage{babel} % Nastavitve za jezik
 \RequirePackage[verbose=true,letterpaper]{geometry} % Za nastavljanje robov strani
 \RequirePackage{graphicx}  % omogoča vlaganje slik različnih formatov
 \RequirePackage{titlesec} % Nastavitve za stile naslovov
 \RequirePackage{fancyhdr} % poskrbi, na primer, za glave strani
-\RequirePackage{amsmath, amsfonts, amssymb} % dodatni simboli
+\RequirePackage{amsmath, amsfonts, amssymb} % dodatni matematicni simboli
 \RequirePackage[hyphens]{url}
 \RequirePackage{color} % Za barve
 \RequirePackage{soul}
@@ -40,7 +35,35 @@
 \RequirePackage{float} % Nastavitve za pozicioniranje tabel in figur
 \RequirePackage[font=bf]{caption} % Nstavitve naslovov figur, tabel...
 \RequirePackage[switch]{lineno} % Za namene recenzij
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Opcije
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Za lazjo revizijo
+\DeclareOption{review}{\def\@review{}}
+% Definicija clanka
+\DeclareOption{article}{%
+	\PassOptionsToClass{twocolumn}{article}%
+	\PassOptionsToPackage{english}{babel}%
+	\def\@twocolumn{}%
+}
+\DeclareOption{clanek}{%
+	\PassOptionsToClass{twocolumn}{article}%
+	\PassOptionsToPackage{slovene}{babel}%
+	\def\@twocolumn{}%
+}
+% Definicija abstrakta
+\DeclareOption{abstract}{%
+	\PassOptionsToClass{onecolumn}{article}%
+	\PassOptionsToPackage{english}{babel}%
+}
+\DeclareOption{abstrakt}{%
+	\PassOptionsToClass{onecolumn}{article}%
+	\PassOptionsToPackage{slovene}{babel}%
+}
+\DeclareOption*{%
+	\ClassWarning{\@clssname}{Unknown option ‘\CurrentOption’}%
+}
 \ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,15 +84,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Libertine font
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\IfFileExists{tgadventor.sty}{}{\ClassWarning{\@classname}{Libertine package is missing; please upgrade}}
-\RequirePackage{tgadventor}
+\IfFileExists{lmodern.sty}{}{\ClassWarning{\@classname}{lmodern package is missing; please upgrade}}
+\RequirePackage{lmodern}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stil strani
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Mapa s slikami
-\graphicspath{ {./styles/} }
-
 \pagestyle{fancy}
 \lhead{}
 \chead{}
@@ -84,7 +104,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Handling graphics direcory
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\imagespath}[1]{\graphicspath{ {./styles/}#1} }
+\newcommand{\imagespath}[1]{\graphicspath{ {./}#1} }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Handling Keywords
@@ -187,8 +207,8 @@
 % swap above/belowcaptionskip lengths for tables
 \renewenvironment{table}
 {\setlength{\abovecaptionskip}{\@belowcaptionskip}%
-	\setlength{\belowcaptionskip}{\@abovecaptionskip}%
-	\@float{table}}
+\setlength{\belowcaptionskip}{\@abovecaptionskip}%
+\@float{table}}
 {\end@float}
 
 % footnote formatting
@@ -214,27 +234,27 @@
 \setlength{\leftmarginv  }{0.5em}
 \def\@listi  {\leftmargin\leftmargini}
 \def\@listii {\leftmargin\leftmarginii
-	\labelwidth\leftmarginii
-	\advance\labelwidth-\labelsep
-	\topsep  2\p@ \@plus 1\p@    \@minus 0.5\p@
-	\parsep  1\p@ \@plus 0.5\p@ \@minus 0.5\p@
-	\itemsep \parsep}
+\labelwidth\leftmarginii
+\advance\labelwidth-\labelsep
+\topsep  2\p@ \@plus 1\p@    \@minus 0.5\p@
+\parsep  1\p@ \@plus 0.5\p@ \@minus 0.5\p@
+\itemsep \parsep}
 \def\@listiii{\leftmargin\leftmarginiii
-	\labelwidth\leftmarginiii
-	\advance\labelwidth-\labelsep
-	\topsep    1\p@ \@plus 0.5\p@ \@minus 0.5\p@
-	\parsep    \z@
-	\partopsep 0.5\p@ \@plus 0\p@ \@minus 0.5\p@
-	\itemsep \topsep}
+\labelwidth\leftmarginiii
+\advance\labelwidth-\labelsep
+\topsep    1\p@ \@plus 0.5\p@ \@minus 0.5\p@
+\parsep    \z@
+\partopsep 0.5\p@ \@plus 0\p@ \@minus 0.5\p@
+\itemsep \topsep}
 \def\@listiv {\leftmargin\leftmarginiv
-	\labelwidth\leftmarginiv
-	\advance\labelwidth-\labelsep}
+\labelwidth\leftmarginiv
+\advance\labelwidth-\labelsep}
 \def\@listv  {\leftmargin\leftmarginv
-	\labelwidth\leftmarginv
-	\advance\labelwidth-\labelsep}
+\labelwidth\leftmarginv
+\advance\labelwidth-\labelsep}
 \def\@listvi {\leftmargin\leftmarginvi
-	\labelwidth\leftmarginvi
-	\advance\labelwidth-\labelsep}
+\labelwidth\leftmarginvi
+\advance\labelwidth-\labelsep}
 
 % create title
 \providecommand{\maketitle}{}
@@ -250,7 +270,7 @@
 		\parindent 1em\noindent
 		\hbox to 1.8em{\hss $\m@th ^{\@thefnmark}$}##1
 	}
-	\twocolumn[\@maketitle]
+	\ifdef{\@twocolumn}{\twocolumn[\@maketitle]}{\@maketitle}
 	\@thanks
 	\endgroup
 	\setcounter{footnote}{0}
@@ -266,13 +286,14 @@
 		\linewidth\hsize
 		\centering
 		{\LARGE\sc \@title\par}
+		\ifdef{\@review}{\@date\\}{}
 		\def\And{%
-		\end{tabular}\hfil\linebreak[0]\hfil%
-		\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
+			\end{tabular}\hfil\linebreak[0]\hfil%
+			\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
 		}
 		\def\AND{%
-		\end{tabular}\hfil\linebreak[4]\hfil%
-		\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
+			\end{tabular}\hfil\linebreak[4]\hfil%
+			\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
 		}
 		\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\@author\end{tabular}%
 		\vskip 0.4in \@minus 0.1in \vskip 0.2in
@@ -310,7 +331,7 @@
 \AtBeginDocument{
 	\ifdef{\@review}{\linenumbers}{}
 }
-
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Na koncu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
