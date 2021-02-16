@@ -1,18 +1,25 @@
 % STUCOSREC_ARTICLE.CLS - VERSION 1.0
 % Klemen Berkovič - Februar 11th. 2021
 %
+\NeedsTeXFormat{LaTeX2e}
+
+\def\@classname{styles/stucosrec_article}
 \def\fileversion{V1.00}
 \def\filedate{February 11, 2021}
 \def\docdate {February 11, 2021}
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{stucosrec_clanek}[2021/02/04 Example LaTeX class]
+\ProvidesClass{\@classname}[2021/02/04 Example LaTeX class]
 
-% fonts
-\renewcommand{\rmdefault}{ptm}
-\renewcommand{\sfdefault}{phv}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Opcije
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareOption{review}{\def\@review{\@classname}}
+\ProcessOptions
 
-\LoadClass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Osnovni razred dokumenta
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\LoadClass[twocolumn]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Osnovni paketi
@@ -20,46 +27,68 @@
 \RequirePackage[utf8]{inputenc} % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
 \RequirePackage[slovene]{babel} % naloži, med drugim, slovenske delilne vzorce
 \RequirePackage[verbose=true,letterpaper]{geometry} % Za nastavljanje robov strani
-\RequirePackage[pdftex]{graphicx}  % omogoča vlaganje slik različnih formatov
+\RequirePackage{graphicx}  % omogoča vlaganje slik različnih formatov
 \RequirePackage{titlesec} % Nastavitve za stile naslovov
 \RequirePackage{fancyhdr} % poskrbi, na primer, za glave strani
-\RequirePackage{amssymb} % dodatni simboli
-\RequirePackage{amsmath} % eqref, npr.
-\RequirePackage[hyphens]{url} 
+\RequirePackage{amsmath, amsfonts, amssymb} % dodatni simboli
+\RequirePackage[hyphens]{url}
 \RequirePackage{color} % Za barve
 \RequirePackage{soul}
 \RequirePackage[linesnumbered,boxed,resetcount]{algorithm2e} % Pseudokod, ki bo imel ostevilcene vrstice ter bo imel vsebino zapisano v okvirju
 \RequirePackage[pdftex, colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, pagebackref=false, pdfproducer={LaTeX}, pdfcreator={LaTeX}, hidelinks]{hyperref}
 \RequirePackage{datetime}
-\RequirePackage{multicol}
 \RequirePackage{float} % Nastavitve za pozicioniranje tabel in figur
+\RequirePackage[font=bf]{caption} % Nstavitve naslovov figur, tabel...
+\RequirePackage[switch]{lineno} % Za namene recenzij
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Postavitev strani
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newgeometry{
-	textheight=9in,
-	textwidth=6.5in,
-	top=1in,
-	headheight=14pt,
-	headsep=25pt,
-	footskip=30pt
+	textheight=9.25in,
+	textwidth=7in,
+	top=50pt,
+	headsep=5pt,
+	footnotesep=25pt,
+	footskip=55pt
 }
+
+\def\listoffigures{\ClassError{\string\listoffigures\space is not allowed}\@eha}
+\def\listoftables{\ClassError{\string\listoftables\space is not allowed}\@eha}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Libertine font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\IfFileExists{tgadventor.sty}{}{\ClassWarning{\@classname}{Libertine package is missing; please upgrade}}
+\RequirePackage{tgadventor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stil strani
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\widowpenalty=10000
-\clubpenalty=10000
-\flushbottom
+% Mapa s slikami
+\graphicspath{ {./styles/} }
 
-\fancyhf{}
-\pagestyle{empty}
-\renewcommand{\headrulewidth}{0.4pt}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{\includegraphics[scale=.09]{StucosrecLogo.pdf}}
+\cfoot{}
+\rfoot{}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
 \fancyheadoffset{0pt}
-\cfoot{\thepage}
 
-%Handling Keywords
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Handling graphics direcory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\imagespath}[1]{\graphicspath{ {./styles/}#1} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Handling Keywords
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\keywordname{{\bfseries \emph{Keywords}}}%
 \def\keywords#1{%
 	\par\addvspace\medskipamount{%
@@ -154,11 +183,12 @@
 \setlength{\abovecaptionskip}{\@abovecaptionskip}
 \setlength{\belowcaptionskip}{\@belowcaptionskip}
 
+
 % swap above/belowcaptionskip lengths for tables
 \renewenvironment{table}
 {\setlength{\abovecaptionskip}{\@belowcaptionskip}%
-\setlength{\belowcaptionskip}{\@abovecaptionskip}%
-\@float{table}}
+	\setlength{\belowcaptionskip}{\@abovecaptionskip}%
+	\@float{table}}
 {\end@float}
 
 % footnote formatting
@@ -184,27 +214,27 @@
 \setlength{\leftmarginv  }{0.5em}
 \def\@listi  {\leftmargin\leftmargini}
 \def\@listii {\leftmargin\leftmarginii
-\labelwidth\leftmarginii
-\advance\labelwidth-\labelsep
-\topsep  2\p@ \@plus 1\p@    \@minus 0.5\p@
-\parsep  1\p@ \@plus 0.5\p@ \@minus 0.5\p@
-\itemsep \parsep}
+	\labelwidth\leftmarginii
+	\advance\labelwidth-\labelsep
+	\topsep  2\p@ \@plus 1\p@    \@minus 0.5\p@
+	\parsep  1\p@ \@plus 0.5\p@ \@minus 0.5\p@
+	\itemsep \parsep}
 \def\@listiii{\leftmargin\leftmarginiii
-\labelwidth\leftmarginiii
-\advance\labelwidth-\labelsep
-\topsep    1\p@ \@plus 0.5\p@ \@minus 0.5\p@
-\parsep    \z@
-\partopsep 0.5\p@ \@plus 0\p@ \@minus 0.5\p@
-\itemsep \topsep}
+	\labelwidth\leftmarginiii
+	\advance\labelwidth-\labelsep
+	\topsep    1\p@ \@plus 0.5\p@ \@minus 0.5\p@
+	\parsep    \z@
+	\partopsep 0.5\p@ \@plus 0\p@ \@minus 0.5\p@
+	\itemsep \topsep}
 \def\@listiv {\leftmargin\leftmarginiv
-\labelwidth\leftmarginiv
-\advance\labelwidth-\labelsep}
+	\labelwidth\leftmarginiv
+	\advance\labelwidth-\labelsep}
 \def\@listv  {\leftmargin\leftmarginv
-\labelwidth\leftmarginv
-\advance\labelwidth-\labelsep}
+	\labelwidth\leftmarginv
+	\advance\labelwidth-\labelsep}
 \def\@listvi {\leftmargin\leftmarginvi
-\labelwidth\leftmarginvi
-\advance\labelwidth-\labelsep}
+	\labelwidth\leftmarginvi
+	\advance\labelwidth-\labelsep}
 
 % create title
 \providecommand{\maketitle}{}
@@ -220,12 +250,10 @@
 		\parindent 1em\noindent
 		\hbox to 1.8em{\hss $\m@th ^{\@thefnmark}$}##1
 	}
-	\thispagestyle{empty}
-	\vspace*{-0.5cm}
-	\@maketitle
+	\twocolumn[\@maketitle]
 	\@thanks
-	%\@notice
 	\endgroup
+	\setcounter{footnote}{0}
 	\let\maketitle\relax
 	\let\thanks\relax
 }
@@ -238,17 +266,16 @@
 		\linewidth\hsize
 		\centering
 		{\LARGE\sc \@title\par}
-		\vskip 0.1in
 		\def\And{%
-			\end{tabular}\hfil\linebreak[0]\hfil%
-			\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
+		\end{tabular}\hfil\linebreak[0]\hfil%
+		\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
 		}
 		\def\AND{%
-			\end{tabular}\hfil\linebreak[4]\hfil%
-			\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
+		\end{tabular}\hfil\linebreak[4]\hfil%
+		\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\ignorespaces%
 		}
 		\begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\@author\end{tabular}%
-		\vskip 0.2in
+		\vskip 0.4in \@minus 0.1in \vskip 0.2in
 	}
 }
 
@@ -281,15 +308,12 @@
 % Na zacetku
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{
-	\maketitle
-	\begin{multicols}{2}
+	\ifdef{\@review}{\linenumbers}{}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Na koncu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\AtEndDocument{
-	\end{multicols}
-}
+\AtEndDocument{}
 
 \endinput

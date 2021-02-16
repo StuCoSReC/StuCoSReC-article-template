@@ -1,4 +1,4 @@
-\documentclass{styles/stucosrec_article}
+\documentclass[review]{styles/stucosrec_article}
 
 % for testing purposes only
 \usepackage{lipsum}
@@ -6,15 +6,15 @@
 
 \title{\latex TEMPLATE FOR StuCoSReC CONTRIBUTION}
 \author{
-	Klemen Berkovi\v{c} \\
-	Faculty of Electrical Engineering and Computer Science\\
-	University of Maribor\\
+	Klemen Berkovi\v{c}\thanks{He did the most work} \\
+	Faculty of Electrical \\Engineering and Computer Science,\\
+	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
 	\texttt{klemen.berkovic1@um.si} \\
 	\And
-	Iztok Fister Jr. \\
-	Faculty of Electrical Engineering and Computer Science\\
-	University of Maribor\\
+	Iztok Fister Jr.\thanks{The best sponsor of them all} \\
+	Faculty of Electrical \\Engineering and Computer Science,\\
+	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
 	\texttt{iztok.fister1@um.si} \\
 	%% \And
@@ -28,9 +28,13 @@
 	%% Address \\
 	%% \texttt{email} \\
 }
-\date{February 2021}
+
+% images directory
+\imagespath{ {./images/} }
 
 \begin{document}
+	
+	\maketitle
 	
 	\begin{abstract}
 		\lipsum[1]
@@ -81,6 +85,24 @@
 		\label{fig:fig1}
 	\end{figure}
 
+	See Figure~\ref{fig:fig2}. This is an example of pdf image.
+
+	\begin{figure}[b!]
+		\centering
+		\includegraphics[scale=.5]{drawingOne.pdf}
+		\caption{Sample figure caption.}
+		\label{fig:fig2}
+	\end{figure}
+
+	See Figure~\ref{fig:fig3}. This is an example of png image.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=.5]{drawingTwo.png}
+		\caption{Sample figure caption.}
+		\label{fig:fig3}
+	\end{figure}
+
 	\subsection{Tables}
 	See awesome Table~\ref{tab:table}.
 	
@@ -121,6 +143,48 @@
 		\item consectetur adipiscing elit.
 		\item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
 	\end{itemize}
+
+	\section{Math Equations}
+	You may want to display math equations in three distinct styles:
+	inline, numbered or non-numbered display.  Each of
+	the three are discussed in the next sections.
+	
+	\subsection{Inline (In-text) Equations}
+	A formula that appears in the running text is called an
+	inline or in-text formula.  It is produced by the
+	\textbf{math} environment, which can be
+	invoked with the usual \texttt{{\char'134}begin. . .{\char'134}end}
+	construction or with the short form \texttt{\$. . .\$}. You
+	can use any of the symbols and structures,
+	from $\alpha$ to $\omega$, available in
+	\LaTeX\cite{Lamport:LaTeX}; this section will simply show a
+	few examples of in-text equations in context. Notice how
+	this equation: \begin{math}\lim_{n\rightarrow \infty}x=0\end{math},
+	set here in in-line math style, looks slightly different when
+	set in display style.  (See next section).
+	
+	\subsection{Display Equations}
+	A numbered display equation -- one set off by vertical space
+	from the text and centered horizontally -- is produced
+	by the \textbf{equation} environment. An unnumbered display
+	equation is produced by the \textbf{displaymath} environment.
+	
+	Again, in either environment, you can use any of the symbols
+	and structures available in \LaTeX; this section will just
+	give a couple of examples of display equations in context.
+	First, consider the equation, shown as an inline equation above:
+	\begin{equation}\lim_{n\rightarrow \infty}x=0\end{equation}
+	Notice how it is formatted somewhat differently in
+	the \textbf{displaymath}
+	environment.  Now, we'll enter an unnumbered equation:
+	\begin{displaymath}\sum_{i=0}^{\infty} x + 1\end{displaymath}
+	and follow it with another numbered equation:
+	\begin{equation}\sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f\end{equation}
+	just to demonstrate \LaTeX's able handling of numbering.
+	
+	\subsection{One more example}
+	When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are
+	$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
 	
 	\bibliography{references}
 
