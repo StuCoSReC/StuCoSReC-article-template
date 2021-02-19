@@ -6,19 +6,19 @@
 
 \title{\latex TEMPLATE FOR StuCoSReC CONTRIBUTION}
 \author{
-	Klemen Berkovi\v{c}\thanks{He did the most work} \\
+	Klemen Berkovi\v{c}\thanks{He did the most work so he insisted his name be first.} \\
 	Faculty of Electrical \\Engineering and Computer Science,\\
 	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
 	\texttt{klemen.berkovic1@um.si}
 	\And
-	Iztok Fister Jr.\thanks{The best sponsor of them all} \\
+	Iztok Fister Jr.\thanks{The secretary disavows any knowledge of this author's actions.} \\
 	Faculty of Electrical \\Engineering and Computer Science,\\
 	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
 	\texttt{iztok.fister1@um.si}
 	\AND
-	Iztok Fister \thanks{He is the boss} \\
+	Iztok Fister \thanks{This author is the one who did really hard work for StuCosRec conference.} \\
 	Faculty of Electrical \\Engineering and Computer Science,\\
 	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
@@ -41,22 +41,29 @@
 	\end{abstract}
 
 	\keywords{StuCosRec Proceedings \and \LaTeX \and text tagging}
-		
+			
 	\section{Introduction}
 	
 	The \textit{proceedings} are the records of a conference.
 	StuCosRec seeks to give these conference by-products a uniform, high-quality appearance.
-	To do this, ACM has some rigid requirements for the format of the proceedings documents: there is a specified format (balanced  double columns), a specified set of fonts (Arial or Helvetica and Times Roman) in certain specified sizes (for instance, 9 point for body copy), a specified live area (18 $\times$ 23.5 cm [7" $\times$ 9.25"]) centered on the page, specified size of margins (1.9 cm [0.75"]) top, (2.54 cm [1"]) bottom and (1.9 cm [.75"]) left and right; specified column width (8.45 cm [3.33"]) and gutter size (.83 cm [.33"]).
+	To do this, ACM has some rigid requirements for the format of the proceedings documents: there is a specified format (balanced  double columns), a specified set of fonts (Arial or Helvetica and Times Roman) in certain specified sizes (for instance, 11 point for body copy), specified size of margins 1.76 cm top, 2.54 cm bottom and 1.6 cm left and right; specified column width 8.71 cm with vertical spacing btween the columns equal to 0.35 cm.
 	
 	The good news is, with only a handful of manual settings, the \LaTeX\ document class file handles all of this for you.
+	In addition author has to use \textbf{article} option for provided document class to create an article.
+	If the author would want to produced an abstract the author must use \textbf{abstract} instead of \textbf{article} option for the provided document class.
+	Papers presenting student research are being sought.
+	Papers must be in English and provide sufficient details to allow the program committee to assess their merits.
+	For sending the document to a review procedure an author must use \textbf{review} option for the provided document class and when the document passes the review procedure, then the author shoud remove the \textbf{review} option.
+	Submissions are limited to at most \textbf{four pages} in a pdf format.
 	
 	The remainder of this document is concerned with showing, in the context of an ``actual'' document, the \LaTeX\ commands specifically available for denoting the structure of a proceedings paper, rather than with giving rigorous descriptions or explanations of such commands.
 	
 	\section{The \textit{Body} of The Paper}
 	
-	Typically, the body of a paper is organized into a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and even smaller sections.  The command \texttt{{\char'134}section} that precedes this paragraph is part of such a hierarchy.\footnote{This is the second footnote. It starts a series of three footnotes that add nothing informational, but just give an idea of how footnotes work and look. It is a wordy one, just so you see how a longish one plays out.} \LaTeX\ handles the numbering and placement of these headings for you, when you use the appropriate heading commands around the titles of the headings.
+	Typically, the body of a paper is organized into a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and even smaller sections.
+	The command \texttt{{\char'134}section} that precedes this paragraph is part of such a hierarchy.~\footnote{Command {\texttt{\char'134 And}} or/and {\texttt{\char'134 AND}}, you have already used for positioning the authors for your paper.} \LaTeX\ handles the numbering and placement of these headings for you, when you use the appropriate heading commands around the titles of the headings.
 	If you want a sub-subsection or smaller part to be unnumbered in your output, simply append an asterisk to the command name.
-	Examples of both numbered and unnumbered headings will appear throughout the balance of this sample document.
+	Examples of both numbered and unnumbered headings will appear throughout the balance of this sample document~\footnote{This is the second footnote. It starts a series of three foot notes that add nothing informational, but just give an ideaof how footnotes work and look. It is a wordy one, just soyou see how a longish one plays out.}.
 	
 	Because the entire article is contained in the \textbf{document} environment, you can indicate the start of a new paragraph with a blank line in your input file; that is why this sentence forms a separate paragraph.
 	
@@ -64,9 +71,9 @@
 	
 	We have already seen several typeface changes in this sample.
 	You can indicate italicized words or phrases in your text with the command \texttt{{\char'134}textit}; emboldening with the command \texttt{{\char'134}textbf} and typewriter-style (for instance, for computer code) with \texttt{{\char'134}texttt}.
-	But remember, you do not have to indicate typestyle changes when such changes are part of the \textit{structural} elements of your 	article; for instance, the heading of this subsection will be in a sans serif\footnote{A third footnote, here. Let's make this a rather short one to see how it looks.} typeface, but that is handled by the document class file. Take care with the use of\footnote{A fourth, and last, footnote.} the curly braces in typeface changes; they mark the beginning and end of the text that is to be in the different typeface.
+	But remember, you do not have to indicate typestyle changes when such changes are part of the \textit{structural} elements of your 	article; for instance, the heading of this subsection will be in a sans serif typeface, but that is handled by the document class file. Take care with the use of the curly braces in typeface changes; they mark the beginning and end of the text that is to be in the different typeface.
 	
-	You can use whatever symbols, accented characters, or non-English characters you need anywhere in your document; you can find a complete list of what is available in the \textit{\LaTeX\
+	You can use whatever symbols, accented characters, or non-English characters you need anywhere in your document~\footnote{A third footnote, here. Let's make this a rather short one to see how it looks.}; you can find a complete list of what is available in the \textit{\LaTeX\
 	User's Guide}\cite{Lamport:LaTeX}.
 	
 	\subsection{Math Equations}
@@ -78,7 +85,7 @@
 	\subsubsection{Inline (In-text) Equations}
 	
 	A formula that appears in the running text is called an inline or in-text formula.
-	It is produced by the \textbf{math} environment, which can be invoked with the usual \texttt{{\char'134}begin. . .{\char'134}end} construction or with the short form \texttt{\$. . .\$}.
+	It is produced by the \textbf{math} environment, which can be invoked with the usual \texttt{{\char'134}begin {\char'134}end} construction or with the short form \texttt{\$$\cdots$\$}.
 	You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \LaTeX\cite{Lamport:LaTeX}; this section will simply show a few examples of in-text equations in context.
 	Notice how this equation: 
 	\begin{math}\lim_{n\rightarrow \infty}x=0\end{math}, 
@@ -100,7 +107,7 @@
 	\begin{equation}\sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f\end{equation}
 	just to demonstrate \LaTeX's able handling of numbering.
 	
-	When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+	When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.$$
 	
 	Equation~\ref{equ:yannibel} is showing how to write cases.
 	
@@ -155,7 +162,7 @@
 	
 	\begin{table}
 		\centering
-		\caption{Frequency of Special Characters}
+		\caption{Frequency of Special Characters.}
 		\label{tab:table1}
 		\begin{tabular}{|c|c|l|} \hline
 			Non-English or Math&Frequency&Comments\\ \hline
@@ -172,7 +179,7 @@
 	
 	\begin{table*}
 		\centering
-		\caption{Some Typical Commands}
+		\caption{Some Typical Commands.}
 		\label{tab:table2}
 		\begin{tabular}{|c|c|l|} \hline
 			Command&A Number&Comments\\ \hline
@@ -184,7 +191,7 @@
 	
 	\subsection{Figures}
 	
-	Like tables, figures cannot be split across pages; the best placement for them is typically the top or the bottom of the page nearest their initial cite.
+	Like tables, figures cannot be split across pages; the best placement for them is typically the top or the bottom of the page nearest their initial cite~\footnote{A fourth, and last, footnote.}.
 	To ensure this proper ``floating'' placement of figures, use the environment \textbf{figure} to enclose the figure and its caption.
 	
 	This sample document contains examples of \textbf{.pdf} files to be displayable with \LaTeX.
@@ -237,7 +244,7 @@
 				go back to the beginning of current section\;
 			}
 		}
-		\caption{How to write algorithms}
+		\caption{\bf How to write algorithms.}
 		\label{algo:sample}
 	\end{algorithm}
 
@@ -249,10 +256,10 @@
 	Remember that you might still have Acknowledgments or Appendices; brief samples of these follow.
 	There is still the Bibliography to deal with; and we will make a disclaimer about that here: with the exception of the reference to the \LaTeX\ book, the citations in this paper are to articles which have nothing to do with the present subject and are used as examples only.
 	
-	\section{Acknowledgments}
-	
-	This section is optional; it is a location for you to acknowledge grants, funding, editing assistance and what have you.
-	In the present case, for example, the authors would like to thank Klemen Berkovič for his help in codifying this \textit{Author's Guide} and the \textbf{.cls} and \textbf{.tex} files that it describes.
+	\begin{acknowledgment}
+		This section is optional; it is a location for you to acknowledge grants, funding, editing assistance and what have you.
+		In the present case, for example, the authors would like to thank Klemen Berkovič for his help in codifying this \textit{Author's Guide} and the \textbf{.cls} and \textbf{.tex} files that it describes.
+	\end{acknowledgment}
 
 	\bibliography{references}
 	

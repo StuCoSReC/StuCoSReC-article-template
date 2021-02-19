@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Osnovni razred dokumenta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\LoadClass{article}
+\LoadClass[11pt]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Osnovni paketi
@@ -21,15 +21,13 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc} % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
 \RequirePackage{babel} % Nastavitve za jezik
-\RequirePackage[verbose=true,letterpaper]{geometry} % Za nastavljanje robov strani
+\RequirePackage[verbose=true]{geometry} % Za nastavljanje robov strani
 \RequirePackage{graphicx}  % omogoča vlaganje slik različnih formatov
-\RequirePackage{titlesec} % Nastavitve za stile naslovov
 \RequirePackage{fancyhdr} % poskrbi, na primer, za glave strani
 \RequirePackage{amsmath, amsfonts, amssymb} % dodatni matematicni simboli
 \RequirePackage[hyphens]{url}
 \RequirePackage{color} % Za barve
-\RequirePackage{soul}
-\RequirePackage[linesnumbered,boxed,resetcount]{algorithm2e} % Pseudokod, ki bo imel ostevilcene vrstice ter bo imel vsebino zapisano v okvirju
+\RequirePackage[linesnumbered, boxed, resetcount]{algorithm2e} % Pseudokod, ki bo imel ostevilcene vrstice ter bo imel vsebino zapisano v okvirju
 \RequirePackage[pdftex, colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, pagebackref=false, pdfproducer={LaTeX}, pdfcreator={LaTeX}, hidelinks]{hyperref}
 \RequirePackage{datetime}
 \RequirePackage{float} % Nastavitve za pozicioniranje tabel in figur
@@ -46,6 +44,7 @@
 	\PassOptionsToClass{twocolumn}{article}%
 	\PassOptionsToPackage{english}{babel}%
 	\def\@twocolumn{}%
+	\def\@enlan{}%
 }
 \DeclareOption{clanek}{%
 	\PassOptionsToClass{twocolumn}{article}%
@@ -56,6 +55,7 @@
 \DeclareOption{abstract}{%
 	\PassOptionsToClass{onecolumn}{article}%
 	\PassOptionsToPackage{english}{babel}%
+	\def\@enlan{}%
 }
 \DeclareOption{abstrakt}{%
 	\PassOptionsToClass{onecolumn}{article}%
@@ -69,14 +69,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Postavitev strani
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newgeometry{
-	textheight=9.25in,
-	textwidth=7in,
+\geometry{
+	a4paper,
+	hcentering,
+	textheight=720pt,
+	textwidth=504pt,
 	top=50pt,
-	headsep=5pt,
-	footnotesep=25pt,
 	footskip=55pt
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nastavitve za lomljenje vrstic
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tolerance=350
+\pretolerance=350
+\setlength{\emergencystretch}{3em}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Odstranjevanje izdelave kazala
@@ -344,6 +351,11 @@
 {
 	\end{bf}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Handling acknowledgment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{acknowledgment}{\section*{\ifdef{\@enlan}{Acknowledgment}{Zahvala}}}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stil bibliografije
