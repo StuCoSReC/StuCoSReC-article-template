@@ -75,7 +75,8 @@
 	textheight=720pt,
 	textwidth=504pt,
 	top=50pt,
-	footskip=55pt
+	footskip=55pt,
+	marginparwidth=0pt
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
