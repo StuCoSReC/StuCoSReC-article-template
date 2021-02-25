@@ -232,9 +232,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\topsep       }{4\p@ \@plus 1\p@   \@minus 2\p@}
 \setlength{\partopsep    }{1\p@ \@plus 0.5\p@ \@minus 0.5\p@}
-\setlength{\itemsep      }{2\p@ \@plus 1\p@   \@minus 0.5\p@}
-\setlength{\parsep       }{2\p@ \@plus 1\p@   \@minus 0.5\p@}
-\setlength{\leftmargin   }{3pc}
+\setlength{\itemsep      }{1.5\p@ \@plus 1\p@   \@minus 0.5\p@}
+\setlength{\parsep       }{1.5\p@ \@plus 1\p@   \@minus 0.5\p@}
+\setlength{\leftmargin   }{1.7pc}
 \setlength{\leftmargini  }{\leftmargin}
 \setlength{\leftmarginii }{2em}
 \setlength{\leftmarginiii}{1.5em}
@@ -346,7 +346,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewenvironment{abstract}{
 	\centerline
-	{\large \bfseries \scshape Abstract}
+	{\large \bf \sc Abstract}
 	\begin{bf}
 }
 {
