@@ -1,24 +1,29 @@
-\documentclass[article]{stucosrec}
+\documentclass[article,english]{stucosrec}
 
 % for testing purposes only
 \usepackage{lipsum}
-\newcommand{\latex}{\LaTeX\xspace}
 
-\title{\latex TEMPLATE FOR StuCoSReC CONTRIBUTION}
+% Example of defining a new command
+\newcommand{\latex}{\LaTeX\xspace}
+\newcommand{\bibtex}{Bib\TeX\xspace}
+\newcommand{\stucosrec}{StuCoSReC\xspace}
+\newcommand{\latexe}{\LaTeX$2_\epsilon$\xspace}
+
+\title{\latex TEMPLATE FOR \stucosrec CONTRIBUTION}
 \author{
-	Klemen Berkovi\v{c}\thanks{He did the most work so he insisted his name be first.} \\
+	Klemen Berkovi\v{c}\thanks{If this author has more email addresses you can add them here. Example email1@email.com, email2@email.si} \\
 	Faculty of Electrical \\Engineering and Computer Science,\\
 	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
 	\texttt{klemen.berkovic1@um.si}
 	\And
-	Iztok Fister Jr.\thanks{The secretary disavows any knowledge of this author's actions.} \\
+	Iztok Fister Jr.\thanks{If this author has more affiliation you can add them here. If there are multiple corresponding authors tell that in this section.} \\
 	Faculty of Electrical \\Engineering and Computer Science,\\
 	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
 	\texttt{iztok.fister1@um.si}
 	\AND
-	Iztok Fister \thanks{This author is the one who did really hard work for StuCosRec conference.} \\
+	Iztok Fister \thanks{If this author has telephone number you can add it here. In the telephone number include country code. Example +xx-xxxx-xxx-xxxx} \\
 	Faculty of Electrical \\Engineering and Computer Science,\\
 	University of Maribor,\\
 	Koro\v{s}ka cesta 46, 2000 Maribor, Slovenia \\
@@ -33,37 +38,40 @@
 	\maketitle
 	
 	\begin{abstract}
-		This paper provides a sample of a \latex document which conforms to the formatting guidelines for StuCosRec Proceedings.
-		It is a guide to Preparing StuCosRec Proceedings using \LaTeX$2_\epsilon$ and Bib\TeX.
-		This source file has been written with the intention of being compiled under \LaTeX$2_\epsilon$\ and BibTeX.
-		The developers have tried to include every imaginable sort of ``bells and whistles", such as a subtitle, footnotes on title, subtitle and authors, as well as in the text, and every optional component (e.g. Review, Additional Authors, Appendices) not to mention examples of equations, tables and figures.
-		To make best use of this sample document, run it through \LaTeX\ and Bib\TeX, and compare this source code with the printed output produced by the dvi file.
+		This paper provides a sample of a \latex document which conforms to the formatting guidelines for \stucosrec Proceedings.
+		It is a guide to Preparing \stucosrec Proceedings using \latexe and \bibtex.
+		This source file has been written with the intention of being compiled under \latexe and \bibtex.
+		The developers have tried to include every imaginable sort of ``bells and whistles", such as a subtitle, footnotes on title, subtitle and authors, as well as in the text, and every optional component (e.g. Review, Additional Authors, References, Acknowledgment) not to mention examples of equations, tables, figures, lists and algorithms.
+		To make best use of this sample document, run it through \latex and \bibtex, and compare output of this document to your produced output document.
 	\end{abstract}
 
-	\keywords{StuCosRec Proceedings \and \LaTeX \and text tagging}
-			
+	\keywords{\stucosrec Proceedings \and \latex \and text tagging}
+
 	\section{Introduction}
 	
 	The \textit{proceedings} are the records of a conference.
-	StuCosRec seeks to give these conference by-products a uniform, high-quality appearance.
-	To do this, ACM has some rigid requirements for the format of the proceedings documents: there is a specified format (balanced  double columns), a specified set of fonts (Arial or Helvetica and Times Roman) in certain specified sizes (for instance, 11 point for body copy), specified size of margins 1.76 cm top, 2.54 cm bottom and 1.6 cm left and right; specified column width 8.71 cm with vertical spacing btween the columns equal to 0.35 cm.
+	\stucosrec seeks to give these conference by-products a uniform, high-quality appearance.
+	To do this, \stucosrec has some rigid requirements for the format of the proceedings documents: there is a specified format (balanced  double columns), a specified set of fonts (Arial or Helvetica and Times Roman) in certain specified sizes (for instance, 11 point for body copy), specified size of margins 1.76 cm top, 2.54 cm bottom and 1.6 cm left and right; specified column width 8.71 cm with vertical spacing between the columns equal to 0.35 cm.
 	
-	The good news is, with only a handful of manual settings, the \LaTeX\ document class file handles all of this for you.
+	The good news is, with only a handful of manual settings, the \latex document class file handles all of this for you.
 	In addition author has to use \textbf{article} option for provided document class to create an article.
 	If the author would want to produced an abstract the author must use \textbf{abstract} instead of \textbf{article} option for the provided document class.
-	Papers presenting student research are being sought.
-	Papers must be in English and provide sufficient details to allow the program committee to assess their merits.
-	For sending the document to a review procedure an author must use \textbf{review} option for the provided document class and when the document passes the review procedure, then the author shoud remove the \textbf{review} option.
-	Submissions are limited to at most \textbf{four pages} in a pdf format.
+	Papers presenting student research are being reviewed.
+	Papers must be in English so in addition to \textbf{article} option add \textbf{english} option to the document class.
+	Papers must provide sufficient details to allow the program committee to assess their merits.
+	For sending the document to a review procedure, author must use \textbf{review} option for the provided document class and when the document passes the review procedure, then the author should remove the \textbf{review} option.
+	Submissions are limited to at most \textbf{four pages} in a \texttt{pdf} format.
 	
-	The remainder of this document is concerned with showing, in the context of an ``actual'' document, the \LaTeX\ commands specifically available for denoting the structure of a proceedings paper, rather than with giving rigorous descriptions or explanations of such commands.
+	The remainder of this document is concerned with showing, in the context of an ``actual'' document, the \latex commands specifically available for denoting the structure of a proceedings paper, rather than with giving rigorous descriptions or explanations of such commands.
 	
 	\section{The \textit{Body} of The Paper}
 	
 	Typically, the body of a paper is organized into a hierarchical structure, with numbered or unnumbered headings for sections, subsections, sub-subsections, and even smaller sections.
-	The command \texttt{{\char'134}section} that precedes this paragraph is part of such a hierarchy.~\footnote{Command {\texttt{\char'134 And}} or/and {\texttt{\char'134 AND}}, you have already used for positioning the authors for your paper.} \LaTeX\ handles the numbering and placement of these headings for you, when you use the appropriate heading commands around the titles of the headings.
+	The command \texttt{{\char'134}section} that precedes this paragraph is part of such a hierarchy\footnote{Command {\texttt{\char'134 And}} or/and {\texttt{\char'134 AND}}, you have already used for positioning the authors for your paper.}. \latex handles the numbering and placement of these headings for you, when you use the appropriate heading commands around the titles of the headings.
 	If you want a sub-subsection or smaller part to be unnumbered in your output, simply append an asterisk to the command name.
-	Examples of both numbered and unnumbered headings will appear throughout the balance of this sample document~\footnote{This is the second footnote. It starts a series of three foot notes that add nothing informational, but just give an ideaof how footnotes work and look. It is a wordy one, just soyou see how a longish one plays out.}.
+	Examples of both numbered and unnumbered headings will appear throughout the balance of this sample document\footnote{This is the second footnote. It starts a series of three foot notes that add nothing informational, but just give an idea
+of how footnotes work and look. It is a wordy one, just so
+you see how a longish one plays out.}.
 	
 	Because the entire article is contained in the \textbf{document} environment, you can indicate the start of a new paragraph with a blank line in your input file; that is why this sentence forms a separate paragraph.
 	
@@ -73,8 +81,8 @@
 	You can indicate italicized words or phrases in your text with the command \texttt{{\char'134}textit}; emboldening with the command \texttt{{\char'134}textbf} and typewriter-style (for instance, for computer code) with \texttt{{\char'134}texttt}.
 	But remember, you do not have to indicate typestyle changes when such changes are part of the \textit{structural} elements of your 	article; for instance, the heading of this subsection will be in a sans serif typeface, but that is handled by the document class file. Take care with the use of the curly braces in typeface changes; they mark the beginning and end of the text that is to be in the different typeface.
 	
-	You can use whatever symbols, accented characters, or non-English characters you need anywhere in your document~\footnote{A third footnote, here. Let's make this a rather short one to see how it looks.}; you can find a complete list of what is available in the \textit{\LaTeX\
-	User's Guide}\cite{Lamport:LaTeX}.
+	You can use whatever symbols, accented characters, or non-English characters you need anywhere in your document\footnote{A third footnote, here. Let's make this a rather short one to see how it looks.}; you can find a complete list of what is available in the \textit{\latex
+	User's Guide}~\cite{Lamport:LaTeX}.
 	
 	\subsection{Math Equations}
 	
@@ -85,8 +93,8 @@
 	\subsubsection{Inline (In-text) Equations}
 	
 	A formula that appears in the running text is called an inline or in-text formula.
-	It is produced by the \textbf{math} environment, which can be invoked with the usual \texttt{{\char'134}begin {\char'134}end} construction or with the short form \texttt{\$$\cdots$\$}.
-	You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \LaTeX\cite{Lamport:LaTeX}; this section will simply show a few examples of in-text equations in context.
+	It is produced by the \textbf{math} environment, which can be invoked with the usual \texttt{{\char'134}begin {\char'134}end} constructs or with the short form \textbf{\$$\cdots$\$}.
+	You can use any of the symbols and structures, from $\alpha$ to $\omega$, available in \latex~\cite{Lamport:LaTeX}; this section will simply show a few examples of in-text equations in context.
 	Notice how this equation: 
 	\begin{math}\lim_{n\rightarrow \infty}x=0\end{math}, 
 	set here in in-line math style, looks slightly different when set in display style.
@@ -97,7 +105,7 @@
 	A numbered display equation -- one set off by vertical space from the text and centered horizontally -- is produced by the \textbf{equation} environment.
 	An unnumbered display equation is produced by the \textbf{displaymath} environment.
 	
-	Again, in either environment, you can use any of the symbols and structures available in \LaTeX; this section will just give a couple of examples of display equations in context.
+	Again, in either environment, you can use any of the symbols and structures available in \latex; this section will just give a couple of examples of display equations in context.
 	First, consider the equation, shown as an inline equation above:
 	\begin{equation}\lim_{n\rightarrow \infty}x=0\end{equation}
 	Notice how it is formatted somewhat differently in the \textbf{displaymath} environment.
@@ -105,11 +113,12 @@
 	\begin{displaymath}\sum_{i=0}^{\infty} x + 1\end{displaymath}
 	and follow it with another numbered equation:
 	\begin{equation}\sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f\end{equation}
-	just to demonstrate \LaTeX's able handling of numbering.
+	just to demonstrate \latex's able handling of numbering.
 	
-	When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.$$
+	Next you will see and example of unnumbered equation not in \textbf{displaymath} environment, but in short form defined with \textbf{\$\$$\cdots$\$\$}.
+	When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are $$x_{1, 2} = \frac{-b \pm \sqrt{b^2-4ac}}{2a}.$$
 	
-	Equation~\ref{equ:yannibel} is showing how to write cases.
+	Here is and example of referencing an equation. Equation~\ref{equ:yannibel} is showing how to write cases in \latex.
 	
 	\begin{equation}
 		\begin{aligned} 
@@ -141,14 +150,14 @@
 	
 	Citations to articles \cite{bowman:reasoning, clark:pct, braams:babel, herlihy:methodology}, conference proceedings \cite{clark:pct} or books \cite{salas:calculus, Lamport:LaTeX} listed
 	in the Bibliography section of your article will occur throughout the text of your article.
-	You should use BibTeX to automatically produce this bibliography; you simply need to insert one of several citation commands with a key of the item cited in the proper location in the \texttt{.tex} file \cite{Lamport:LaTeX}.
+	You should use \bibtex to automatically produce this bibliography; you simply need to insert one of several citation commands with a key of the item cited in the proper location in the \texttt{.tex} file \cite{Lamport:LaTeX}.
 	The key is a short reference you invent to uniquely identify each work; in this sample document, the key is the first author's surname and a word from the title.
 	This identifying key is included with each item in the \texttt{.bib} file for your article.
 	
-	The details of the construction of the \texttt{.bib} file are beyond the scope of this sample document, but more information can be found in the \textit{Author's Guide}, and exhaustive details in the \textit{\LaTeX\ User's Guide}\cite{Lamport:LaTeX}.
+	The details of the construction of the \texttt{.bib} file are beyond the scope of this sample document, but more information can be found in the \textit{Author's Guide}, and exhaustive details in the \textit{\latex User's Guide}\cite{Lamport:LaTeX}.
 	
 	This article shows only the plainest form of the citation command, using \texttt{{\char'134}cite}.
-	This is what is stipulated in the SIGS style specifications.
+	This is what is stipulated in the ACM citation style specifications.
 	No other citation format is endorsed.
 	
 	\subsection{Tables}
@@ -156,9 +165,9 @@
 	Because tables cannot be split across pages, the best placement for them is typically the top of the page nearest their initial cite.
 	To ensure this proper ``floating'' placement of tables, use the environment \textbf{table} to enclose the table's contents and the table caption.
 	The contents of the table itself must go in the \textbf{tabular} environment, to be aligned properly in rows and columns, with the desired horizontal and vertical rules.
-	Again, detailed instructions on \textbf{tabular} material is found in the \textit{\LaTeX\ User's Guide}.
+	Again, detailed instructions on \textbf{tabular} material is found in the \textit{\latex User's Guide}.
 	
-	Immediately following this sentence is the point at which Table~\ref{tab:table1} is included in the input file; compare the placement of the table here with the table in the printed dvi output of this document.
+	Immediately following this sentence is the point at which Table~\ref{tab:table1} is included in the input file; compare the placement of the table here with the table in the printed \texttt{pdf} output of this document.
 	
 	\begin{table}
 		\centering
@@ -175,7 +184,7 @@
 
 	To set a wider table, which takes up the whole width of the page's live area, use the environment \textbf{table*} to enclose the table's contents and the table caption.
 	As with a single-column table, this wide table will ``float" to a location deemed more desirable.
-	Immediately following this sentence is the point at which Table~\ref{tab:table2} is included in the input file; again, it is instructive to compare the placement of the table here with the table in the printed dvi output of this document.
+	Immediately following this sentence is the point at which Table~\ref{tab:table2} is included in the input file; again, it is instructive to compare the placement of the table here with the table in the printed \texttt{pdf} output of this document.
 	
 	\begin{table*}
 		\centering
@@ -191,30 +200,30 @@
 	
 	\subsection{Figures}
 	
-	Like tables, figures cannot be split across pages; the best placement for them is typically the top or the bottom of the page nearest their initial cite~\footnote{A fourth, and last, footnote.}.
+	Like tables, figures cannot be split across pages; the best placement for them is typically the top or the bottom of the page nearest their initial cite\footnote{A fourth, and last, footnote.}.
 	To ensure this proper ``floating'' placement of figures, use the environment \textbf{figure} to enclose the figure and its caption.
 	
-	This sample document contains examples of \textbf{.pdf} files to be displayable with \LaTeX.
+	This sample document contains examples of \texttt{.pdf} files to be displayable with \latex.
 	Usage of this type of figure element is seen in Figure~\ref{fig:circles}.
 	
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.5]{circles.pdf}
-		\caption{A sample circles graphic (.pdf format).}
+		\caption{A sample circles graphic (\texttt{.pdf} format).}
 		\label{fig:circles}
 	\end{figure}
 
-	This sample document contains examples of \textbf{.png} files to be displayable with \LaTeX.
+	This sample document contains examples of \texttt{.png} files to be displayable with \latex.
 	Usage of this type of figure element is seen in Figure~\ref{fig:star}.
 	
 	\begin{figure}
 		\centering
 		\includegraphics[scale=0.5]{star.png}
-		\caption{A sample star graphic (.png format).}
+		\caption{A sample star graphic (\texttt{.png} format).}
 		\label{fig:star}
 	\end{figure}
 
-	As was the case with tables, you may want a figure that spans two columns.
+	As was the case with tables, you may want a figure to spans over two columns.
 	To do this, and still to ensure proper ``floating'' placement of tables, use the environment \textbf{figure*} to enclose the figure and its caption.
 	
 	\begin{figure*}
@@ -223,19 +232,43 @@
 		\caption{A sample spin graphic with a span.}
 		\label{fig:spin}
 	\end{figure*}
+	
+	\subsection{Lists}
+	
+	In the document you can use lists to present the information to the reader.
+	Lists are created within \textbf{itemize} \latex environment.
+	In the next list example you can see how lists are created and used:
+	
+	\begin{itemize}
+		\item First item,
+		\item Second item and
+		\item Third item.
+	\end{itemize}
+	
+	Some times authors want to reference some list items in the later text.
+	For that you can use \textbf{enumerate} \latex environment.
+	Example of numbered list:
+	
+	\begin{enumerate}
+	    \item First point,
+	    \item Second point,
+	    \item $\cdots$
+	\end{enumerate}
+	
+	And now reference Item 1, which is the first item in our list.
 
 	\subsection{Algorithms}
 	
-	You may want to display algorithms in your document, check Algorithm~\ref{algo:sample}.
-	Algorithms are written in \textbf{algorithm} environment.
+	You may want to display algorithms in your document, check an example of an Algorithm~\ref{algo:sample}.
+	Algorithms are written within \textbf{algorithm} environment.
 	
 	\begin{algorithm}
 		\SetAlgoLined
 		\KwData{this text}
-		\KwResult{how to write algorithm with \LaTeX2e }
+		\KwResult{how to write algorithm with \latexe}
 		initialization\;
 		\tcc{this is a comment to tell you that we will now really start code}
-		\While{not at end of this document}{
+		\While{not at end of this document}{\label{algo:sample:while}
 			read current\;
 			\eIf{understand}{
 				go to next section\;
@@ -244,21 +277,23 @@
 				go back to the beginning of current section\;
 			}
 		}
-		\caption{\bf How to write algorithms.}
+		\caption{How to write algorithms.}
 		\label{algo:sample}
 	\end{algorithm}
 
-	The details of the \textbf{algorithm} environment check \url{http://tug.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf}.
+	You can reference a line in an algorithm which can be seen in next sentance.
+	An example of while loop can be seen in line~\ref{algo:sample:while}.
+	Form more details on the \textbf{algorithm} environment check \url{http://tug.ctan.org/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf} document.
 	
 	\section{Conclusions}
 	
 	This paragraph will end the body of this sample document.
-	Remember that you might still have Acknowledgments or Appendices; brief samples of these follow.
-	There is still the Bibliography to deal with; and we will make a disclaimer about that here: with the exception of the reference to the \LaTeX\ book, the citations in this paper are to articles which have nothing to do with the present subject and are used as examples only.
+	Remember that you might still have Acknowledgments; brief samples of these follow.
+	There is still the Bibliography to deal with; and we will make a disclaimer about that here: with the exception of the reference to the \latex book, the citations in this paper are to articles which have nothing to do with the present subject and are used as examples only.
 	
 	\begin{acknowledgment}
 		This section is optional; it is a location for you to acknowledge grants, funding, editing assistance and what have you.
-		In the present case, for example, the authors would like to thank Klemen Berkovič for his help in codifying this \textit{Author's Guide} and the \textbf{.cls} and \textbf{.tex} files that it describes.
+		In the present case, for example, the authors would like to thank Klemen Berkovič for his help in codifying this \textit{Author's Guide}, the \texttt{.cls} and \texttt{.tex} files that is describes. Authors would like to thank Iztok Fister Jr. for his contribution to \textit{Author's Guide} and \texttt{.tex} files.
 	\end{acknowledgment}
 
 	\bibliography{references}

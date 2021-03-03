@@ -8,6 +8,14 @@
 \def\filedate{February 11, 2021}
 \def\docdate {February 11, 2021}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nastavitve za imena naslovov
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\@abstractTitle{Abstract}
+\def\@keywordsTitle{Keywords}
+\def\@acknowladgementTitle{Acknowledgment}
+\def\@refname{References}
+
 \ProvidesClass{\@classname}[2021/02/04 Example LaTeX class]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,7 +39,7 @@
 \RequirePackage[pdftex, colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, pagebackref=false, pdfproducer={LaTeX}, pdfcreator={LaTeX}, hidelinks]{hyperref}
 \RequirePackage{datetime}
 \RequirePackage{float} % Nastavitve za pozicioniranje tabel in figur
-\RequirePackage[font=bf]{caption} % Nstavitve naslovov figur, tabel...
+\RequirePackage[labelfont=bf]{caption} % Nstavitve naslovov figur, tabel...
 \RequirePackage[switch]{lineno} % Za namene recenzij
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,24 +50,36 @@
 % Definicija clanka
 \DeclareOption{article}{%
 	\PassOptionsToClass{twocolumn}{article}%
-	\PassOptionsToPackage{english}{babel}%
-	\def\@twocolumn{}%
-	\def\@enlan{}%
-}
-\DeclareOption{clanek}{%
-	\PassOptionsToClass{twocolumn}{article}%
-	\PassOptionsToPackage{slovene}{babel}%
 	\def\@twocolumn{}%
 }
 % Definicija abstrakta
 \DeclareOption{abstract}{%
 	\PassOptionsToClass{onecolumn}{article}%
-	\PassOptionsToPackage{english}{babel}%
-	\def\@enlan{}%
 }
-\DeclareOption{abstrakt}{%
-	\PassOptionsToClass{onecolumn}{article}%
-	\PassOptionsToPackage{slovene}{babel}%
+% Definicija za angleski jezik
+\DeclareOption{english}{%
+	\PassOptionsToPackage{main=english}{babel}%
+}
+% Definicija za slovenski jezik
+\DeclareOption{slovene}{%
+	\PassOptionsToPackage{main=slovene}{babel}%
+	\def\@abstractTitle{Abstrakt}%
+	\def\@keywordsTitle{Ključne besede}%
+	\def\@acknowladgementTitle{Zahvala}%
+	\def\@refname{Reference}%
+	\captionsetup[figure]{name={Slika}}%
+	\captionsetup[table]{name={Tabela}}%
+	\SetAlgorithmName{Algoritem}{}{}%
+	\SetAlgoProcName{Procedura}{}%
+	\SetAlgoFuncName{Funkcija}{}%
+	\SetKwInput{KwData}{Podatki}%
+	\SetKwInput{KwResult}{Rezultat}%
+	\SetKwInput{KwIn}{Vhod}%
+	\SetKwInput{KwOut}{Izhod}%
+}
+% Za debagiranje
+\DeclareOption{debug}{%
+    \def\@debug{}%
 }
 \DeclareOption*{%
 	\ClassWarning{\@clssname}{Unknown option ‘\CurrentOption’}%
@@ -203,15 +223,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Pozicioniranje naslovov
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% swap above/belowcaptionskip lengths for tables
-\renewenvironment{table}
-{\setlength{\abovecaptionskip}{\@belowcaptionskip}%
-\setlength{\belowcaptionskip}{\@abovecaptionskip}%
-\@float{table}}
-{\end@float}
-
+% for tables
+\captionsetup[table]{aboveskip=6pt, skip=6pt}
+\captionsetup[table*]{aboveskip=6pt, skip=6pt}
+% for figures
+\captionsetup[figure]{aboveskip=6pt, skip=6pt}
+\captionsetup[figure*]{aboveskip=6pt, skip=6pt}
 % for algorithms
-\SetAlCapSkip{5pt}
+\SetAlCapSkip{6pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % footnote formatting
@@ -318,7 +337,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Handling Keywords
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\keywordname{{\bfseries \emph{Keywords}}}%
+\def\keywordname{{\bf \emph{\@keywordsTitle}}}%
 \def\keywords#1{%
 	\par\addvspace\medskipamount{%
 		\rightskip=0pt plus1cm
@@ -346,7 +365,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewenvironment{abstract}{
 	\centerline
-	{\large \bf \sc Abstract}
+	{\large \bf \sc \@abstractTitle}
 	\begin{bf}
 }
 {
@@ -356,17 +375,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Handling acknowledgment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{acknowledgment}{\section*{\ifdef{\@enlan}{Acknowledgment}{Zahvala}}}{}
+\newenvironment{acknowledgment}{\section*{\@acknowladgementTitle}}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stil bibliografije
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{acm}
+\renewcommand{\refname}{\@refname}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Na zacetku dokumenta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginDocument{
+    \ifdef{\@debug}{\RequirePackage{showframe}}{}
 	\ifdef{\@review}{\linenumbers}{}
 }
 	
