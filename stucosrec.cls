@@ -39,8 +39,9 @@
 \RequirePackage[pdftex, colorlinks=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, pagebackref=false, pdfproducer={LaTeX}, pdfcreator={LaTeX}, hidelinks]{hyperref}
 \RequirePackage{datetime}
 \RequirePackage{float} % Nastavitve za pozicioniranje tabel in figur
-\RequirePackage[labelfont=bf]{caption} % Nstavitve naslovov figur, tabel...
+\RequirePackage{caption} % Nstavitve naslovov figur, tabel...
 \RequirePackage[switch]{lineno} % Za namene recenzij
+\RequirePackage{paralist} % Inline lists
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Opcije
@@ -159,7 +160,21 @@
 \renewcommand{\Huge}{\@setfontsize\Huge\@xxvpt{28}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Pozicioniranje naslovov
+% float placement
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\topfraction      }{0.85}
+\renewcommand{\bottomfraction   }{0.5}
+\renewcommand{\textfraction     }{0.1}
+\renewcommand{\floatpagefraction}{0.7}
+
+\newlength{\@abovecaptionskip}\setlength{\@abovecaptionskip}{7pt}
+\newlength{\@belowcaptionskip}\setlength{\@belowcaptionskip}{12pt}
+
+\setlength{\abovecaptionskip}{\@abovecaptionskip}
+\setlength{\belowcaptionskip}{\@belowcaptionskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pozicioniranje naslovov poglavji
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \providecommand{\section}{}
 \renewcommand{\section}{%
@@ -207,30 +222,16 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% float placement
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\topfraction      }{0.85}
-\renewcommand{\bottomfraction   }{0.4}
-\renewcommand{\textfraction     }{0.1}
-\renewcommand{\floatpagefraction}{0.7}
-
-\newlength{\@abovecaptionskip}\setlength{\@abovecaptionskip}{7\p@}
-\newlength{\@belowcaptionskip}\setlength{\@belowcaptionskip}{\z@}
-
-\setlength{\abovecaptionskip}{\@abovecaptionskip}
-\setlength{\belowcaptionskip}{\@belowcaptionskip}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Pozicioniranje naslovov
+% Stil in pozicioniranje naslovov
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % for tables
-\captionsetup[table]{aboveskip=6pt, skip=6pt}
-\captionsetup[table*]{aboveskip=6pt, skip=6pt}
+\captionsetup[table]{labelfont=bf, position=top, aboveskip=\abovecaptionskip, skip=\belowcaptionskip}
 % for figures
-\captionsetup[figure]{aboveskip=6pt, skip=6pt}
-\captionsetup[figure*]{aboveskip=6pt, skip=6pt}
+\captionsetup[figure]{labelfont=bf, position=bottom, aboveskip=\abovecaptionskip, skip=\belowcaptionskip}
 % for algorithms
-\SetAlCapSkip{6pt}
+\SetAlCapSkip{\belowcaptionskip}
+\SetAlgoCaptionLayout{centerline}
+\SetAlgoCaptionLayout{textbf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % footnote formatting
