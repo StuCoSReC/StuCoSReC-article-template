@@ -29,7 +29,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc} % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
 \RequirePackage{babel} % Nastavitve za jezik
-\RequirePackage[verbose=true]{geometry} % Za nastavljanje robov strani
+\RequirePackage[verbose=true,paper=a4paper,twoside=false]{geometry} % Za nastavljanje robov strani
 \RequirePackage{graphicx}  % omogoča vlaganje slik različnih formatov
 \RequirePackage{fancyhdr} % poskrbi, na primer, za glave strani
 \RequirePackage{amsmath, amsfonts, amssymb} % dodatni matematicni simboli
@@ -64,7 +64,7 @@
 % Definicija za slovenski jezik
 \DeclareOption{slovene}{%
 	\PassOptionsToPackage{main=slovene}{babel}%
-	\def\@abstractTitle{Abstrakt}%
+	\def\@abstractTitle{Povzetek}%
 	\def\@keywordsTitle{Ključne besede}%
 	\def\@acknowladgementTitle{Zahvala}%
 	\def\@refname{Reference}%
@@ -90,13 +90,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Postavitev strani
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\geometry{
-	a4paper,
+\newgeometry{
 	hcentering,
-	textheight=720pt,
+	headsep=5pt,
+	textheight=700pt,
 	textwidth=504pt,
-	top=50pt,
-	footskip=55pt,
+	top=30pt,
+	footskip=45pt,
 	marginparwidth=0pt
 }
 
