@@ -90,13 +90,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Postavitev strani
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newgeometry{
-	hcentering,
-	headsep=5pt,
+\geometry{
+	centering,
 	textheight=700pt,
 	textwidth=504pt,
-	top=30pt,
-	footskip=45pt,
+	footskip=50pt,
 	marginparwidth=0pt
 }
 
