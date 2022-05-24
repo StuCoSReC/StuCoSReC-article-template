@@ -1,7 +1,7 @@
 PDFLATEX:=pdflatex
 BIBTEX:=bibtex
 
-TEX_DOCUMENT:=stucosrec_article_english.tex
+TEX_DOCUMENT:=scores-template.tex
 
 all: build
 
